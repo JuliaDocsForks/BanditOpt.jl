@@ -34,5 +34,5 @@ after_success:
   # push coverage results to Codecov
   - julia -e 'cd(Pkg.dir("BanditOpt")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
   # Deploy Docs
-  - julia -e 'Pkg.add("Documenter")'
+  - julia -e 'ps=Pkg.PackageSpec(name="Documenter", version="0.19"); Pkg.add(ps); Pkg.pin(ps)'
   - julia -e 'cd(Pkg.dir("BanditOpt")); include(joinpath("docs", "make.jl"))'
